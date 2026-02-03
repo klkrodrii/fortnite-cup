@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>T3ba Cup – Iscrizione</title>
+<title>Thebes Cup – Iscrizione</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -206,7 +206,7 @@ button:hover {
 <div class="container">
 
   <div id="formBox">
-    <h1>🏆 T3ba Cup</h1>
+    <h1>🏆 Thebes Cup</h1>
     <p class="subtitle">Modulo di iscrizione ufficiale</p>
 
     <form id="cupForm">
@@ -264,7 +264,7 @@ button:hover {
 </div>
 
 <script>
-const webhookURL = "INCOLLA_QUI_IL_TUO_WEBHOOK";
+const webhookURL = "https://discord.com/api/webhooks/1468302083903193140/YGowAnHpay9WIuZtFhdYVeSmwkhaaGYnVJQptvPz0lOQqErUpEyttb3EaebmXw_w0E7L";
 
 document.getElementById("cupForm").addEventListener("submit", function(e) {
   e.preventDefault();
@@ -286,7 +286,7 @@ document.getElementById("cupForm").addEventListener("submit", function(e) {
   document.getElementById("loader").style.display = "block";
 
   const embed = {
-    title: "🏆 NUOVA ISCRIZIONE – T3BA CUP",
+    title: "🏆 NUOVA ISCRIZIONE – THEBES CUP",
     color: 0x00ff88,
     fields: [
       { name: "👤 Giocatore", value: `**Nome:** ${f.get("nome")}\n**Epic ID:** ${epicID}\n**Età:** ${f.get("eta")}\n**Discord:** ${f.get("discord")}` },
