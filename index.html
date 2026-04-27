@@ -2,311 +2,230 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>Thebes Cup – Iscrizione</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bandi Staff</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
 
-/* BODY */
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  background: radial-gradient(circle at top left, #0f2b1d, #050b08);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
+body{
+  height:100vh;
+  background:linear-gradient(-45deg,#0a0a0f,#1a1a2e,#121224,#0f0f0f);
+  background-size:400% 400%;
+  animation:gradientBG 12s ease infinite;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
 }
 
-/* CONTAINER */
-.container {
-  width: 100%;
-  max-width: 450px;
-  max-height: 90vh;
-  padding: 30px;
-  background: rgba(5,20,12,0.9);
-  border-radius: 16px;
-  box-shadow: 0 0 35px #00ff88, 0 0 80px rgba(0,255,136,0.35);
-  overflow-y: auto;
-  animation: fadeIn 0.8s ease-out;
+@keyframes gradientBG{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
-/* TITOLI */
-h1 {
-  font-family: 'Orbitron', sans-serif;
-  text-align: center;
-  font-size: 2rem;
-  background: linear-gradient(90deg, #00ff88, #00ffaa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 10px;
-  animation: glow 2s ease-in-out infinite alternate;
+.box{
+  width:420px;
+  padding:35px;
+  border-radius:25px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(25px);
+  box-shadow:0 0 60px rgba(0,0,0,0.8);
+  border:1px solid rgba(255,255,255,0.08);
+  text-align:center;
 }
 
-.subtitle {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #9ddfc1;
+.logo{
+  max-width:180px;
+  margin:0 auto 15px auto;
+  display:block;
+  filter:drop-shadow(0 0 15px rgba(122,132,255,0.6));
 }
 
-/* FORM */
-form label {
-  display: block;
-  margin-top: 14px;
-  font-weight: bold;
-  font-size: 14px;
+h2{margin-bottom:20px;}
+
+input,textarea{
+  width:100%;
+  margin-top:14px;
+  padding:14px;
+  border-radius:12px;
+  border:none;
+  outline:none;
+  background:rgba(255,255,255,0.07);
+  color:white;
+  transition:0.25s;
+  text-align:center;
+  font-size:14px;
 }
 
-form input,
-form select {
-  width: 100%;
-  height: 44px;
-  padding: 0 12px;
-  margin-top: 6px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  background: rgba(255,255,255,0.06);
-  color: #fff;
-  box-sizing: border-box;
+input::placeholder,textarea::placeholder{
+  text-align:center;
 }
 
-form select option {
-  color: black;
+textarea{
+  resize:none;
+  height:90px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
-form input:focus,
-form select:focus {
-  box-shadow: 0 0 12px #00ff88;
-  background: rgba(255,255,255,0.1);
+input:focus,textarea:focus{
+  background:rgba(255,255,255,0.14);
+  transform:scale(1.03);
+  box-shadow:0 0 10px rgba(122,132,255,0.4);
 }
 
-/* BOX STREAMING */
-.box {
-  background: rgba(0,0,0,0.35);
-  padding: 15px;
-  border-radius: 12px;
-  margin-top: 20px;
-  border: 1px solid rgba(0,255,136,0.6);
+button{
+  margin-top:20px;
+  width:100%;
+  padding:14px;
+  border-radius:14px;
+  border:none;
+  background:linear-gradient(135deg,#ff8c00,#ffb347);
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+  box-shadow:0 0 25px rgba(255,140,0,0.5);
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-.box strong {
-  color: #00ff88;
+button:hover{
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 0 40px rgba(255,140,0,0.8);
 }
 
-.box label {
-  font-weight: normal;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 12px;
+.loader{
+  width:18px;height:18px;
+  border:3px solid rgba(255,255,255,0.3);
+  border-top:3px solid white;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+  display:none;
 }
 
-.box input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  accent-color: #00ff88;
+@keyframes spin{to{transform:rotate(360deg);}}
+
+.success,.error{
+  margin-top:12px;
+  display:none;
+  font-size:14px;
 }
 
-/* BUTTON */
-button {
-  margin-top: 28px;
-  width: 100%;
-  height: 50px;
-  border-radius: 14px;
-  border: none;
-  background: linear-gradient(90deg, #00ff88, #00ffaa);
-  color: #002b1b;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  text-transform: uppercase;
-  box-shadow: 0 0 25px rgba(0,255,136,0.7);
-  transition: 0.25s;
-}
+.success{color:#7CFFB2;}
+.error{color:#ff6b6b;}
 
-button:hover {
-  transform: scale(1.05);
+.progress-bar{
+  width:0%;
+  height:4px;
+  background:#ff8c00;
+  margin-top:10px;
+  border-radius:10px;
+  transition:width 0.3s;
 }
-
-/* FOOTER */
-.footer {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 12px;
-  opacity: 0.5;
-}
-
-/* SUCCESS */
-.success {
-  display: none;
-  text-align: center;
-}
-
-.success-icon {
-  font-size: 3.5rem;
-  margin-bottom: 15px;
-  animation: pop 0.6s ease-out;
-}
-
-.success h2 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.8rem;
-  background: linear-gradient(90deg, #00ff88, #00ffaa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.success p {
-  color: #cfeee0;
-}
-
-.success a {
-  display: inline-block;
-  margin-top: 22px;
-  padding: 14px 26px;
-  border-radius: 14px;
-  background: linear-gradient(90deg, #5865F2, #8EA1E1);
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  box-shadow: 0 0 25px rgba(88,101,242,0.8);
-  transition: 0.25s;
-}
-
-.success a:hover {
-  transform: scale(1.08);
-}
-
-/* LOADER */
-#loader {
-  display: none;
-  border: 4px solid rgba(255,255,255,0.1);
-  border-top: 4px solid #00ff88;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  animation: spin 1s linear infinite;
-  margin: 22px auto;
-}
-
-/* ANIMAZIONI */
-@keyframes spin { to { transform: rotate(360deg); } }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; } }
-@keyframes glow { from { text-shadow: 0 0 8px #00ff88; } to { text-shadow: 0 0 22px #00ffaa; } }
-@keyframes pop { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="box">
 
-  <div id="formBox">
-    <h1>🏆 Thebes Cup</h1>
-    <p class="subtitle">Modulo di iscrizione ufficiale</p>
+<img class="logo" src="">
 
-    <form id="cupForm">
-      <label>Nome reale</label>
-      <input type="text" name="nome" required>
+<h2>BANDI STAFF</h2>
 
-      <label>ID Epic</label>
-      <input type="text" name="epic" required>
+<form id="staffForm">
 
-      <label>Nome Discord</label>
-      <input type="text" name="discord" placeholder="Esempio: @Player" required>
+  <input type="text" id="nome" placeholder="👤 Nome" required>
+  <input type="number" id="eta" placeholder="🎂 Età (min 14)" required>
 
-      <label>Età (min 13)</label>
-      <input type="number" name="eta" min="13" required>
+  <textarea id="disp" placeholder="⏰ Disponibilità" required></textarea>
 
-      <label>Console principale</label>
-      <select name="console">
-        <option>PC</option>
-        <option>PlayStation</option>
-        <option>Xbox</option>
-        <option>Switch</option>
-      </select>
+  <textarea id="azione" placeholder="🔥 Cosa faresti" required></textarea>
 
-      <label>Livello abilità</label>
-      <select name="livello">
-        <option>Principiante</option>
-        <option>Intermedio</option>
-        <option>Pro / Expert</option>
-      </select>
+  <button type="submit">
+    <span id="btnText">Invia candidatura</span>
+    <div class="loader" id="loader"></div>
+  </button>
 
-      <div class="box">
-        <strong>📸 Opzioni streaming</strong>
-        <label>Comparire in live <input type="checkbox" name="live"></label>
-        <label>Condivisione schermo <input type="checkbox" name="schermo"></label>
-      </div>
+  <div class="progress-bar" id="progressBar"></div>
 
-      <label>Firma digitale</label>
-      <input type="text" name="firma" placeholder="ACCETTO REGOLE" required>
+  <div class="success" id="successMsg">✅ Candidatura inviata!</div>
+  <div class="error" id="errorMsg">❌ Errore</div>
 
-      <button type="submit">🚀 Invia iscrizione</button>
-    </form>
-
-    <div id="loader"></div>
-    <p class="footer">© Reborns System</p>
-  </div>
-
-  <div id="successBox" class="success">
-    <div class="success-icon">✅</div>
-    <h2>Iscrizione riuscita!</h2>
-    <p>La tua iscrizione è stata inviata correttamente.</p>
-    <p>Unisciti al Discord per info e comunicazioni.</p>
-    <a href="https://discord.gg/qHGQFFZ6T9" target="_blank">👉 Entra nel Discord</a>
-  </div>
+</form>
 
 </div>
 
 <script>
-const webhookURL = "https://discord.com/api/webhooks/1468302083903193140/YGowAnHpay9WIuZtFhdYVeSmwkhaaGYnVJQptvPz0lOQqErUpEyttb3EaebmXw_w0E7L";
+const webhook="https://discord.com/api/webhooks/1498261547049422909/6Z2kh-9B1axVlVFxlrUfC3nhwECKY9i73_piGdjDa7N-kaK0Fz-khhXZhFYMkV2hyclV";
 
-document.getElementById("cupForm").addEventListener("submit", function(e) {
+const banned=["test","admin","123","aaa","user","nome"];
+
+const form=document.getElementById("staffForm");
+const successMsg=document.getElementById("successMsg");
+const errorMsg=document.getElementById("errorMsg");
+const loader=document.getElementById("loader");
+const btnText=document.getElementById("btnText");
+const progressBar=document.getElementById("progressBar");
+
+form.addEventListener("submit",e=>{
   e.preventDefault();
-  const f = new FormData(e.target);
 
-  if (f.get("firma").toUpperCase() !== "ACCETTO REGOLE") {
-    alert('Devi scrivere "ACCETTO REGOLE"');
+  successMsg.style.display="none";
+  errorMsg.style.display="none";
+
+  const nome=document.getElementById("nome").value.toLowerCase();
+  const eta=parseInt(document.getElementById("eta").value);
+  const disp=document.getElementById("disp").value;
+  const azione=document.getElementById("azione").value;
+
+  if(banned.includes(nome)||nome.length<3){
+    errorMsg.innerText="❌ Nome non valido";
+    errorMsg.style.display="block";
     return;
   }
 
-  const epicID = f.get("epic");
-  const invii = JSON.parse(localStorage.getItem("inviiEpic") || "[]");
-
-  if (invii.includes(epicID)) {
-    alert("Hai già inviato un'iscrizione con questo Epic ID!");
+  if(eta<14){
+    errorMsg.innerText="❌ Età minima 14";
+    errorMsg.style.display="block";
     return;
   }
 
-  document.getElementById("loader").style.display = "block";
+  load+=10;
+    progressBar.style.width=p+"%";
+    if(p>=90)clearInterval(i);
+  },100);
 
-  const embed = {
-    title: "🏆 NUOVA ISCRIZIONE – THEBES CUP",
-    color: 0x00ff88,
-    fields: [
-      { name: "👤 Giocatore", value: `**Nome:** ${f.get("nome")}\n**Epic ID:** ${epicID}\n**Età:** ${f.get("eta")}\n**Discord:** ${f.get("discord")}` },
-      { name: "🎮 Piattaforma", value: `**Console:** ${f.get("console")}\n**Livello:** ${f.get("livello")}` },
-      { name: "📸 Streaming", value: `${f.get("live") ? "🟢 Live consentita" : "🔴 Live non consentita"}\n${f.get("schermo") ? "🟢 Condivisione schermo consentita" : "🔴 Condivisione schermo non consentita"}` },
-      { name: "✍️ Firma digitale", value: `\`${f.get("firma")}\`` }
+  fetch(webhook,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({embeds:[{
+    title:"📥 NUOVA CANDIDATURA STAFF",
+    color:0xff8c00,
+    fields:[
+      {name:"Nome",value:nome},
+      {name:"Età",value:eta.toString()},
+      {name:"Disponibilità",value:disp},
+      {name:"Ruolo",value:azione}
     ],
-    timestamp: new Date()
-  };
-
-  fetch(webhookURL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ embeds: [embed] })
-  }).then(() => {
-    invii.push(epicID);
-    localStorage.setItem("inviiEpic", JSON.stringify(invii));
-    document.getElementById("formBox").style.display = "none";
-    document.getElementById("successBox").style.display = "block";
-    document.getElementById("loader").style.display = "none";
+    timestamp:new Date()
+  }]})})
+  .then(()=>{
+    progressBar.style.width="100%";
+    loader.style.display="none";
+    btnText.style.display="block";
+    successMsg.style.display="block";
+    form.reset();
+  })
+  .catch(()=>{
+    loader.style.display="none";
+    btnText.style.display="block";
+    errorMsg.style.display="block";
   });
 });
 </script>
