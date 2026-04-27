@@ -42,7 +42,7 @@ body{
   max-width:180px;
   margin:0 auto 15px auto;
   display:block;
-  filter:drop-shadow(0 0 15px rgba(122,132,255,0.6));
+  filter:drop-shadow(0 0 15px rgba(255,140,0,0.6));
 }
 
 h2{margin-bottom:20px;}
@@ -56,9 +56,7 @@ input,textarea{
   outline:none;
   background:rgba(255,255,255,0.07);
   color:white;
-  transition:0.25s;
   text-align:center;
-  font-size:14px;
 }
 
 input::placeholder,textarea::placeholder{
@@ -68,16 +66,12 @@ input::placeholder,textarea::placeholder{
 textarea{
   resize:none;
   height:90px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
 }
 
 input:focus,textarea:focus{
   background:rgba(255,255,255,0.14);
   transform:scale(1.03);
-  box-shadow:0 0 10px rgba(122,132,255,0.4);
+  box-shadow:0 0 10px rgba(255,140,0,0.4);
 }
 
 button{
@@ -103,7 +97,8 @@ button:hover{
 }
 
 .loader{
-  width:18px;height:18px;
+  width:18px;
+  height:18px;
   border:3px solid rgba(255,255,255,0.3);
   border-top:3px solid white;
   border-radius:50%;
@@ -137,7 +132,7 @@ button:hover{
 
 <div class="box">
 
-<img class="logo" src="">
+<img class="logo" src="https://media.discordapp.net/attachments/1452740810117349428/1496997504674299925/Start-Academy.png">
 
 <h2>BANDI STAFF</h2>
 
@@ -147,7 +142,6 @@ button:hover{
   <input type="number" id="eta" placeholder="🎂 Età (min 14)" required>
 
   <textarea id="disp" placeholder="⏰ Disponibilità" required></textarea>
-
   <textarea id="azione" placeholder="🔥 Cosa faresti" required></textarea>
 
   <button type="submit">
@@ -165,68 +159,81 @@ button:hover{
 </div>
 
 <script>
-const webhook="https://discord.com/api/webhooks/1498261547049422909/6Z2kh-9B1axVlVFxlrUfC3nhwECKY9i73_piGdjDa7N-kaK0Fz-khhXZhFYMkV2hyclV";
+const webhook = "https://discord.com/api/webhooks/1498261547049422909/6Z2kh-9B1axVlVFxlrUfC3nhwECKY9i73_piGdjDa7N-kaK0Fz-khhXZhFYMkV2hyclV";
 
-const banned=["test","admin","123","aaa","user","nome"];
+const banned = ["test","admin","123","aaa","user","nome"];
 
-const form=document.getElementById("staffForm");
-const successMsg=document.getElementById("successMsg");
-const errorMsg=document.getElementById("errorMsg");
-const loader=document.getElementById("loader");
-const btnText=document.getElementById("btnText");
-const progressBar=document.getElementById("progressBar");
+const form = document.getElementById("staffForm");
+const successMsg = document.getElementById("successMsg");
+const errorMsg = document.getElementById("errorMsg");
+const loader = document.getElementById("loader");
+const btnText = document.getElementById("btnText");
+const progressBar = document.getElementById("progressBar");
 
-form.addEventListener("submit",e=>{
+form.addEventListener("submit", async (e)=>{
   e.preventDefault();
 
   successMsg.style.display="none";
   errorMsg.style.display="none";
 
-  const nome=document.getElementById("nome").value.toLowerCase();
-  const eta=parseInt(document.getElementById("eta").value);
-  const disp=document.getElementById("disp").value;
-  const azione=document.getElementById("azione").value;
+  const nome = document.getElementById("nome").value.toLowerCase();
+  const eta = parseInt(document.getElementById("eta").value);
+  const disp = document.getElementById("disp").value;
+  const azione = document.getElementById("azione").value;
 
-  if(banned.includes(nome)||nome.length<3){
-    errorMsg.innerText="❌ Nome non valido";
+  if(banned.includes(nome) || nome.length < 3){
+    errorMsg.innerText = "❌ Nome non valido";
     errorMsg.style.display="block";
     return;
   }
 
-  if(eta<14){
-    errorMsg.innerText="❌ Età minima 14";
+  if(eta < 14){
+    errorMsg.innerText = "❌ Età minima 14";
     errorMsg.style.display="block";
     return;
   }
 
-  load+=10;
+  loader.style.display="block";
+  btnText.style.display="none";
+
+  let p=0;
+  let i=setInterval(()=>{
+    p+=10;
     progressBar.style.width=p+"%";
     if(p>=90)clearInterval(i);
   },100);
 
-  fetch(webhook,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({embeds:[{
+  const embed = {
     title:"📥 NUOVA CANDIDATURA STAFF",
     color:0xff8c00,
     fields:[
       {name:"Nome",value:nome},
       {name:"Età",value:eta.toString()},
       {name:"Disponibilità",value:disp},
-      {name:"Ruolo",value:azione}
+      {name:"Cosa farebbe",value:azione}
     ],
     timestamp:new Date()
-  }]})})
-  .then(()=>{
+  };
+
+  try {
+    await fetch(webhook, {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({embeds:[embed]}),
+      mode:"no-cors"
+    });
+
     progressBar.style.width="100%";
     loader.style.display="none";
     btnText.style.display="block";
     successMsg.style.display="block";
     form.reset();
-  })
-  .catch(()=>{
+
+  } catch(err){
     loader.style.display="none";
     btnText.style.display="block";
     errorMsg.style.display="block";
-  });
+  }
 });
 </script>
 
