@@ -215,43 +215,41 @@ document.getElementById("staffForm").addEventListener("submit", function(e) {
     title: "NUOVA CANDIDATURA",
     color: 0xff1a1a,
     fields: [
-      {
-        name: "👤 Informazioni candidato",
-        value:
-`**Nome:** ${f.get("nome")}
-**ㅤ** ${ㅤ}
-**Discord:** ${discord}
-**ㅤ** ${ㅤ}
-**Età:** ${f.get("eta")}`
-      },
-      {
-        name: "ㅤ",
-        value: f.get("ㅤ")
-      },
-      {
-        name: "⏰ Disponibilità",
-        value: f.get("disponibilita")
-      },
-      {
-        name: "ㅤ",
-        value: f.get("ㅤ")
-      },
-      {
-        name: "📚 Esperienza Staff",
-        value: f.get("esperienza")
-      },
-      {
-        name: "ㅤ",
-        value: f.get("ㅤ")
-      },
-      {
-        name: "💬 Motivazione",
-        value: f.get("motivazione")
-      }
-    ],
-    footer: {
-      text: "© KUSH"
-    },
+fields: [
+
+  {
+    name: "👤 Informazioni candidato",
+    value:
+`> **Nome:** ${f.get("nome")}
+
+> **Discord:** ${discord}
+
+> **Età:** ${f.get("eta")}`
+  },
+
+  {
+    name: "⏰ Disponibilità",
+    value:
+`> ${f.get("disponibilita")}`
+  },
+
+  {
+    name: "📚 Esperienza Staff",
+    value:
+`> ${f.get("esperienza")}`
+  },
+
+  {
+    name: "💬 Motivazione",
+    value:
+`> ${f.get("motivazione")}`
+  }
+
+],
+
+footer: {
+  text: "© KUSH"
+},
     timestamp: new Date().toISOString()
   };
 
