@@ -152,14 +152,14 @@ button:hover {
 
     <form id="staffForm">
 
-      <label>Nome reale</label>
+      <label>Nome</label>
       <input type="text" name="nome" required>
 
-      <label>Nome Discord</label>
-      <input type="text" name="discord" placeholder="@Utente" required>
+      <label>ID Discord</label>
+      <input type="text" name="discord" required>
 
       <label>Età</label>
-      <input type="number" name="eta" min="14" required>
+      <input type="number" name="eta" min="15" required>
 
       <label>Esperienza Staff</label>
       <textarea name="esperienza" required placeholder="Scrivi qui la tua esperienza..."></textarea>
@@ -191,9 +191,6 @@ button:hover {
     <h2>Candidatura inviata!</h2>
 
     <p>La tua candidatura staff è stata inviata correttamente.</p>
-
-    <a href="https://dsc.gg/kushgg" target="_blank">
-      Entra nel Discord
     </a>
 
   </div>
@@ -233,7 +230,7 @@ document.getElementById("staffForm").addEventListener("submit", function(e) {
         name: "👤 Informazioni candidato",
         value:
 `> **Nome:** ${f.get("nome")}
-> **Discord:** ${discord}
+> **ID Discord:** ${discord}
 > **Età:** ${f.get("eta")}`
       },
 
