@@ -87,6 +87,7 @@ button {
   cursor: pointer;
   text-transform: uppercase;
   box-shadow: 0 0 25px rgba(255,26,26,0.7);
+  transition: 0.25s;
 }
 
 button:hover {
@@ -103,11 +104,6 @@ button:hover {
 .success {
   display: none;
   text-align: center;
-}
-
-.success-icon {
-  font-size: 3.5rem;
-  margin-bottom: 15px;
 }
 
 .success h2 {
@@ -150,6 +146,7 @@ button:hover {
 <div class="container">
 
   <div id="formBox">
+
     <h1>KUSH</h1>
     <p class="subtitle">Modulo ufficiale bando staff</p>
 
@@ -183,23 +180,35 @@ button:hover {
     </form>
 
     <div id="loader"></div>
+
     <p class="footer">© KUSH</p>
+
   </div>
 
   <div id="successBox" class="success">
-    <h2>Candidatura inviata!</h2>
+
+    <h2>✅ Candidatura inviata!</h2>
+
     <p>La tua candidatura staff è stata inviata correttamente.</p>
+
+    <a href="https://dsc.gg/kushgg" target="_blank">
+      Entra nel Discord
+    </a>
+
   </div>
 
 </div>
 
 <script>
+
 const webhookURL = "https://discord.com/api/webhooks/1506916922090848266/EAJASVoc5VlYO_q-6AdPn-d30dvyk0fVo4GNmP8rwhqlLdbBYxkttkaN7nB17dJKxDFt";
 
 document.getElementById("staffForm").addEventListener("submit", function(e) {
+
   e.preventDefault();
 
   const f = new FormData(e.target);
+
   const discord = f.get("discord");
 
   const invii = JSON.parse(localStorage.getItem("inviiStaffKush") || "[]");
@@ -212,73 +221,95 @@ document.getElementById("staffForm").addEventListener("submit", function(e) {
   document.getElementById("loader").style.display = "block";
 
   const embed = {
-    title: "NUOVA CANDIDATURA",
-    color: 0xff1a1a,
-    fields: [
-fields: [
 
-  {
-    name: "👤 Informazioni candidato",
-    value:
+    title: "🔥 NUOVA CANDIDATURA STAFF – KUSH",
+
+    color: 0xff1a1a,
+
+    fields: [
+
+      {
+        name: "👤 Informazioni candidato",
+        value:
 `> **Nome:** ${f.get("nome")}
 
 > **Discord:** ${discord}
 
 > **Età:** ${f.get("eta")}`
-  },
+      },
 
-  {
-    name: "⏰ Disponibilità",
-    value:
+      {
+        name: "⏰ Disponibilità",
+        value:
 `> ${f.get("disponibilita")}`
-  },
+      },
 
-  {
-    name: "📚 Esperienza Staff",
-    value:
+      {
+        name: "📚 Esperienza Staff",
+        value:
 `> ${f.get("esperienza")}`
-  },
+      },
 
-  {
-    name: "💬 Motivazione",
-    value:
+      {
+        name: "💬 Motivazione",
+        value:
 `> ${f.get("motivazione")}`
-  }
+      }
 
-],
+    ],
 
-footer: {
-  text: "© KUSH"
-},
+    footer: {
+      text: "© KUSH"
+    },
+
     timestamp: new Date().toISOString()
+
   };
 
   fetch(webhookURL, {
+
     method: "POST",
+
     headers: {
       "Content-Type": "application/json"
     },
+
     body: JSON.stringify({
       embeds: [embed]
     })
+
   })
+
   .then(response => {
+
     if (!response.ok) {
       throw new Error("Errore webhook");
     }
 
     invii.push(discord);
+
     localStorage.setItem("inviiStaffKush", JSON.stringify(invii));
 
     document.getElementById("formBox").style.display = "none";
+
     document.getElementById("successBox").style.display = "block";
+
     document.getElementById("loader").style.display = "none";
+
   })
-  .catch(() => {
-    alert("Errore durante l'invio. Controlla il webhook Discord.");
+
+  .catch(error => {
+
+    console.error(error);
+
+    alert("Errore durante l'invio.");
+
     document.getElementById("loader").style.display = "none";
+
   });
+
 });
+
 </script>
 
 </body>
