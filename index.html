@@ -187,11 +187,8 @@ button:hover {
   </div>
 
   <div id="successBox" class="success">
-    <div class="success-icon">✅</div>
     <h2>Candidatura inviata!</h2>
     <p>La tua candidatura staff è stata inviata correttamente.</p>
-    <p>Entra nel Discord di KUSH.</p>
-    <a href="https://dsc.gg/kushgg" target="_blank">Entra nel Discord</a>
   </div>
 
 </div>
@@ -215,7 +212,7 @@ document.getElementById("staffForm").addEventListener("submit", function(e) {
   document.getElementById("loader").style.display = "block";
 
   const embed = {
-    title: "🔥 NUOVA CANDIDATURA STAFF – KUSH",
+    title: "NUOVA CANDIDATURA",
     color: 0xff1a1a,
     fields: [
       {
@@ -239,7 +236,7 @@ document.getElementById("staffForm").addEventListener("submit", function(e) {
       }
     ],
     footer: {
-      text: "KUSH Staff System"
+      text: "© KUSH"
     },
     timestamp: new Date().toISOString()
   };
