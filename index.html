@@ -172,6 +172,7 @@ button:hover {
         <option>1-2 ore</option>
         <option>2-4 ore</option>
         <option>4+ ore</option>
+        <option>Ogni giorno</option>
         <option>Weekend</option>
       </select>
 
@@ -187,7 +188,7 @@ button:hover {
 
   <div id="successBox" class="success">
 
-    <h2>✅ Candidatura inviata!</h2>
+    <h2>Candidatura inviata!</h2>
 
     <p>La tua candidatura staff è stata inviata correttamente.</p>
 
@@ -222,7 +223,7 @@ document.getElementById("staffForm").addEventListener("submit", function(e) {
 
   const embed = {
 
-    title: "🔥 NUOVA CANDIDATURA STAFF – KUSH",
+    title: "NUOVA CANDIDATURA STAFF",
 
     color: 0xff1a1a,
 
@@ -232,9 +233,7 @@ document.getElementById("staffForm").addEventListener("submit", function(e) {
         name: "👤 Informazioni candidato",
         value:
 `> **Nome:** ${f.get("nome")}
-
 > **Discord:** ${discord}
-
 > **Età:** ${f.get("eta")}`
       },
 
