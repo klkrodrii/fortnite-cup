@@ -219,16 +219,30 @@ document.getElementById("staffForm").addEventListener("submit", function(e) {
         name: "👤 Informazioni candidato",
         value:
 `**Nome:** ${f.get("nome")}
+**ㅤ** ${ㅤ}
 **Discord:** ${discord}
+**ㅤ** ${ㅤ}
 **Età:** ${f.get("eta")}`
+      },
+      {
+        name: "ㅤ",
+        value: f.get("ㅤ")
       },
       {
         name: "⏰ Disponibilità",
         value: f.get("disponibilita")
       },
       {
+        name: "ㅤ",
+        value: f.get("ㅤ")
+      },
+      {
         name: "📚 Esperienza Staff",
         value: f.get("esperienza")
+      },
+      {
+        name: "ㅤ",
+        value: f.get("ㅤ")
       },
       {
         name: "💬 Motivazione",
