@@ -2,17 +2,16 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>Thebes Cup – Iscrizione</title>
+<title>KUSH – Bando Staff</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap');
 
-/* BODY */
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  background: radial-gradient(circle at top left, #0f2b1d, #050b08);
+  background: radial-gradient(circle at top left, #4b0000, #090000);
   color: #fff;
   display: flex;
   justify-content: center;
@@ -21,25 +20,23 @@ body {
   padding: 20px;
 }
 
-/* CONTAINER */
 .container {
   width: 100%;
-  max-width: 450px;
+  max-width: 500px;
   max-height: 90vh;
   padding: 30px;
-  background: rgba(5,20,12,0.9);
+  background: rgba(20,0,0,0.92);
   border-radius: 16px;
-  box-shadow: 0 0 35px #00ff88, 0 0 80px rgba(0,255,136,0.35);
+  box-shadow: 0 0 35px #ff1a1a, 0 0 80px rgba(255,255,255,0.18);
   overflow-y: auto;
   animation: fadeIn 0.8s ease-out;
 }
 
-/* TITOLI */
 h1 {
   font-family: 'Orbitron', sans-serif;
   text-align: center;
   font-size: 2rem;
-  background: linear-gradient(90deg, #00ff88, #00ffaa);
+  background: linear-gradient(90deg, #ff1a1a, #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 10px;
@@ -49,10 +46,9 @@ h1 {
 .subtitle {
   text-align: center;
   margin-bottom: 25px;
-  color: #9ddfc1;
+  color: #ffd6d6;
 }
 
-/* FORM */
 form label {
   display: block;
   margin-top: 14px;
@@ -61,17 +57,22 @@ form label {
 }
 
 form input,
-form select {
+form select,
+form textarea {
   width: 100%;
-  height: 44px;
-  padding: 0 12px;
+  padding: 12px;
   margin-top: 6px;
   border-radius: 10px;
   border: none;
   outline: none;
-  background: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.08);
   color: #fff;
   box-sizing: border-box;
+}
+
+form textarea {
+  min-height: 90px;
+  resize: vertical;
 }
 
 form select option {
@@ -79,22 +80,22 @@ form select option {
 }
 
 form input:focus,
-form select:focus {
-  box-shadow: 0 0 12px #00ff88;
-  background: rgba(255,255,255,0.1);
+form select:focus,
+form textarea:focus {
+  box-shadow: 0 0 12px #ff1a1a;
+  background: rgba(255,255,255,0.13);
 }
 
-/* BOX STREAMING */
 .box {
   background: rgba(0,0,0,0.35);
   padding: 15px;
   border-radius: 12px;
   margin-top: 20px;
-  border: 1px solid rgba(0,255,136,0.6);
+  border: 1px solid rgba(255,255,255,0.45);
 }
 
 .box strong {
-  color: #00ff88;
+  color: #ff4d4d;
 }
 
 .box label {
@@ -108,23 +109,22 @@ form select:focus {
 .box input[type="checkbox"] {
   width: 18px;
   height: 18px;
-  accent-color: #00ff88;
+  accent-color: #ff1a1a;
 }
 
-/* BUTTON */
 button {
   margin-top: 28px;
   width: 100%;
   height: 50px;
   border-radius: 14px;
   border: none;
-  background: linear-gradient(90deg, #00ff88, #00ffaa);
-  color: #002b1b;
+  background: linear-gradient(90deg, #ff1a1a, #ffffff);
+  color: #290000;
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
   text-transform: uppercase;
-  box-shadow: 0 0 25px rgba(0,255,136,0.7);
+  box-shadow: 0 0 25px rgba(255,26,26,0.7);
   transition: 0.25s;
 }
 
@@ -132,7 +132,6 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* FOOTER */
 .footer {
   text-align: center;
   margin-top: 20px;
@@ -140,7 +139,6 @@ button:hover {
   opacity: 0.5;
 }
 
-/* SUCCESS */
 .success {
   display: none;
   text-align: center;
@@ -155,13 +153,13 @@ button:hover {
 .success h2 {
   font-family: 'Orbitron', sans-serif;
   font-size: 1.8rem;
-  background: linear-gradient(90deg, #00ff88, #00ffaa);
+  background: linear-gradient(90deg, #ff1a1a, #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .success p {
-  color: #cfeee0;
+  color: #ffe1e1;
 }
 
 .success a {
@@ -181,11 +179,10 @@ button:hover {
   transform: scale(1.08);
 }
 
-/* LOADER */
 #loader {
   display: none;
   border: 4px solid rgba(255,255,255,0.1);
-  border-top: 4px solid #00ff88;
+  border-top: 4px solid #ff1a1a;
   border-radius: 50%;
   width: 36px;
   height: 36px;
@@ -193,11 +190,40 @@ button:hover {
   margin: 22px auto;
 }
 
-/* ANIMAZIONI */
-@keyframes spin { to { transform: rotate(360deg); } }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; } }
-@keyframes glow { from { text-shadow: 0 0 8px #00ff88; } to { text-shadow: 0 0 22px #00ffaa; } }
-@keyframes pop { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 8px #ff1a1a;
+  }
+  to {
+    text-shadow: 0 0 22px #ffffff;
+  }
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 </style>
 </head>
 
@@ -206,109 +232,195 @@ button:hover {
 <div class="container">
 
   <div id="formBox">
-    <h1>🏆 Thebes Cup</h1>
-    <p class="subtitle">Modulo di iscrizione ufficiale</p>
+    <h1>KUSH</h1>
+    <p class="subtitle">Modulo ufficiale bando staff</p>
 
-    <form id="cupForm">
+    <form id="staffForm">
+
       <label>Nome reale</label>
       <input type="text" name="nome" required>
 
-      <label>ID Epic</label>
-      <input type="text" name="epic" required>
-
       <label>Nome Discord</label>
-      <input type="text" name="discord" placeholder="Esempio: @Player" required>
+      <input type="text" name="discord" placeholder="@Utente" required>
 
-      <label>Età (min 13)</label>
-      <input type="number" name="eta" min="13" required>
+      <label>Età</label>
+      <input type="number" name="eta" min="14" required>
 
-      <label>Console principale</label>
-      <select name="console">
-        <option>PC</option>
-        <option>PlayStation</option>
-        <option>Xbox</option>
-        <option>Switch</option>
-      </select>
+      <label>Esperienza Staff</label>
+      <textarea name="esperienza" required placeholder="Scrivi qui la tua esperienza..."></textarea>
 
-      <label>Livello abilità</label>
-      <select name="livello">
-        <option>Principiante</option>
-        <option>Intermedio</option>
-        <option>Pro / Expert</option>
+      <label>Perché vuoi entrare nello staff di KUSH?</label>
+      <textarea name="motivazione" required placeholder="Spiega qui la tua motivazione..."></textarea>
+
+      <label>Disponibilità</label>
+      <select name="disponibilita" required>
+        <option>1-2 ore</option>
+        <option>2-4 ore</option>
+        <option>4+ ore</option>
+        <option>Weekend</option>
       </select>
 
       <div class="box">
-        <strong>📸 Opzioni streaming</strong>
-        <label>Comparire in live <input type="checkbox" name="live"></label>
-        <label>Condivisione schermo <input type="checkbox" name="schermo"></label>
+        <label>
+          Conosco il regolamento RP
+          <input type="checkbox" name="regolamento" required>
+        </label>
+
+        <label>
+          So gestire ticket/player
+          <input type="checkbox" name="ticket" required>
+        </label>
+
+        <label>
+          Sono serio e disponibile
+          <input type="checkbox" name="serio" required>
+        </label>
       </div>
 
-      <label>Firma digitale</label>
-      <input type="text" name="firma" placeholder="ACCETTO REGOLE" required>
+      <button type="submit">Invia candidatura</button>
 
-      <button type="submit">🚀 Invia iscrizione</button>
     </form>
 
     <div id="loader"></div>
-    <p class="footer">© Reborns System</p>
+
+    <p class="footer">© KUSH</p>
   </div>
 
   <div id="successBox" class="success">
+
     <div class="success-icon">✅</div>
-    <h2>Iscrizione riuscita!</h2>
-    <p>La tua iscrizione è stata inviata correttamente.</p>
-    <p>Unisciti al Discord per info e comunicazioni.</p>
-    <a href="https://discord.gg/qHGQFFZ6T9" target="_blank">👉 Entra nel Discord</a>
+
+    <h2>Candidatura inviata!</h2>
+
+    <p>La tua candidatura staff è stata inviata correttamente.</p>
+
+
   </div>
 
 </div>
 
 <script>
-const webhookURL = "https://discord.com/api/webhooks/1468302083903193140/YGowAnHpay9WIuZtFhdYVeSmwkhaaGYnVJQptvPz0lOQqErUpEyttb3EaebmXw_w0E7L";
 
-document.getElementById("cupForm").addEventListener("submit", function(e) {
+const webhookURL = "https://discord.com/api/webhooks/1506916922090848266/EAJASVoc5VlYO_q-6AdPn-d30dvyk0fVo4GNmP8rwhqlLdbBYxkttkaN7nB17dJKxDFt";
+
+document.getElementById("staffForm").addEventListener("submit", function(e) {
+
   e.preventDefault();
+
   const f = new FormData(e.target);
 
-  if (f.get("firma").toUpperCase() !== "ACCETTO REGOLE") {
-    alert('Devi scrivere "ACCETTO REGOLE"');
+  if (f.get("firma").toUpperCase() !== "ACCETTO REGOLE KUSH") {
+    alert('Devi scrivere "ACCETTO REGOLE KUSH"');
     return;
   }
 
-  const epicID = f.get("epic");
-  const invii = JSON.parse(localStorage.getItem("inviiEpic") || "[]");
+  const discord = f.get("discord");
 
-  if (invii.includes(epicID)) {
-    alert("Hai già inviato un'iscrizione con questo Epic ID!");
+  const invii = JSON.parse(localStorage.getItem("inviiStaffKush") || "[]");
+
+  if (invii.includes(discord)) {
+    alert("Hai già inviato una candidatura con questo Discord!");
     return;
   }
 
   document.getElementById("loader").style.display = "block";
 
   const embed = {
-    title: "🏆 NUOVA ISCRIZIONE – THEBES CUP",
-    color: 0x00ff88,
+
+    title: "🔥 NUOVA CANDIDATURA STAFF – KUSH RP",
+
+    color: 0xff1a1a,
+
     fields: [
-      { name: "👤 Giocatore", value: `**Nome:** ${f.get("nome")}\n**Epic ID:** ${epicID}\n**Età:** ${f.get("eta")}\n**Discord:** ${f.get("discord")}` },
-      { name: "🎮 Piattaforma", value: `**Console:** ${f.get("console")}\n**Livello:** ${f.get("livello")}` },
-      { name: "📸 Streaming", value: `${f.get("live") ? "🟢 Live consentita" : "🔴 Live non consentita"}\n${f.get("schermo") ? "🟢 Condivisione schermo consentita" : "🔴 Condivisione schermo non consentita"}` },
-      { name: "✍️ Firma digitale", value: `\`${f.get("firma")}\`` }
+
+      {
+        name: "👤 Informazioni candidato",
+        value:
+`**Nome:** ${f.get("nome")}
+**Discord:** ${discord}
+**Età:** ${f.get("eta")}
+**Nome IG:** ${f.get("ingame")}
+**FiveM/Steam:** ${f.get("fivem")}`
+      },
+
+      {
+        name: "🛡️ Ruolo richiesto",
+        value:
+`**Ruolo:** ${f.get("ruolo")}
+**Disponibilità:** ${f.get("disponibilita")}`
+      },
+
+      {
+        name: "📚 Esperienza Staff",
+        value: f.get("esperienza")
+      },
+
+      {
+        name: "💬 Motivazione",
+        value: f.get("motivazione")
+      },
+
+      {
+        name: "✅ Conferme",
+        value:
+`${f.get("regolamento") ? "🟢 Regolamento RP confermato" : "🔴 NO"}
+${f.get("ticket") ? "🟢 Gestione ticket confermata" : "🔴 NO"}
+${f.get("serio") ? "🟢 Serietà confermata" : "🔴 NO"}`
+      },
+
+      {
+        name: "✍️ Firma digitale",
+        value: `\`${f.get("firma")}\``
+      }
+
     ],
+
+    footer: {
+      text: "KUSH RP Staff System"
+    },
+
     timestamp: new Date()
+
   };
 
   fetch(webhookURL, {
+
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ embeds: [embed] })
-  }).then(() => {
-    invii.push(epicID);
-    localStorage.setItem("inviiEpic", JSON.stringify(invii));
+
+    headers: {
+      "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+      embeds: [embed]
+    })
+
+  })
+
+  .then(() => {
+
+    invii.push(discord);
+
+    localStorage.setItem("inviiStaffKush", JSON.stringify(invii));
+
     document.getElementById("formBox").style.display = "none";
+
     document.getElementById("successBox").style.display = "block";
+
     document.getElementById("loader").style.display = "none";
+
+  })
+
+  .catch(() => {
+
+    alert("Errore durante l'invio.");
+
+    document.getElementById("loader").style.display = "none";
+
   });
+
 });
+
 </script>
 
 </body>
