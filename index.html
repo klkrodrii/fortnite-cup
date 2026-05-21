@@ -29,7 +29,6 @@ body {
   border-radius: 16px;
   box-shadow: 0 0 35px #ff1a1a, 0 0 80px rgba(255,255,255,0.18);
   overflow-y: auto;
-  animation: fadeIn 0.8s ease-out;
 }
 
 h1 {
@@ -39,8 +38,6 @@ h1 {
   background: linear-gradient(90deg, #ff1a1a, #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 10px;
-  animation: glow 2s ease-in-out infinite alternate;
 }
 
 .subtitle {
@@ -49,16 +46,14 @@ h1 {
   color: #ffd6d6;
 }
 
-form label {
+label {
   display: block;
   margin-top: 14px;
   font-weight: bold;
   font-size: 14px;
 }
 
-form input,
-form select,
-form textarea {
+input, select, textarea {
   width: 100%;
   padding: 12px;
   margin-top: 6px;
@@ -70,46 +65,13 @@ form textarea {
   box-sizing: border-box;
 }
 
-form textarea {
+textarea {
   min-height: 90px;
   resize: vertical;
 }
 
-form select option {
+select option {
   color: black;
-}
-
-form input:focus,
-form select:focus,
-form textarea:focus {
-  box-shadow: 0 0 12px #ff1a1a;
-  background: rgba(255,255,255,0.13);
-}
-
-.box {
-  background: rgba(0,0,0,0.35);
-  padding: 15px;
-  border-radius: 12px;
-  margin-top: 20px;
-  border: 1px solid rgba(255,255,255,0.45);
-}
-
-.box strong {
-  color: #ff4d4d;
-}
-
-.box label {
-  font-weight: normal;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 12px;
-}
-
-.box input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  accent-color: #ff1a1a;
 }
 
 button {
@@ -125,7 +87,6 @@ button {
   cursor: pointer;
   text-transform: uppercase;
   box-shadow: 0 0 25px rgba(255,26,26,0.7);
-  transition: 0.25s;
 }
 
 button:hover {
@@ -147,19 +108,13 @@ button:hover {
 .success-icon {
   font-size: 3.5rem;
   margin-bottom: 15px;
-  animation: pop 0.6s ease-out;
 }
 
 .success h2 {
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.8rem;
   background: linear-gradient(90deg, #ff1a1a, #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.success p {
-  color: #ffe1e1;
 }
 
 .success a {
@@ -171,12 +126,6 @@ button:hover {
   color: white;
   font-weight: bold;
   text-decoration: none;
-  box-shadow: 0 0 25px rgba(88,101,242,0.8);
-  transition: 0.25s;
-}
-
-.success a:hover {
-  transform: scale(1.08);
 }
 
 #loader {
@@ -192,37 +141,6 @@ button:hover {
 
 @keyframes spin {
   to { transform: rotate(360deg); }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes glow {
-  from {
-    text-shadow: 0 0 8px #ff1a1a;
-  }
-  to {
-    text-shadow: 0 0 22px #ffffff;
-  }
-}
-
-@keyframes pop {
-  from {
-    transform: scale(0.6);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
 }
 </style>
 </head>
@@ -260,65 +178,31 @@ button:hover {
         <option>Weekend</option>
       </select>
 
-      <div class="box">
-        <label>
-          Conosco il regolamento RP
-          <input type="checkbox" name="regolamento" required>
-        </label>
-
-        <label>
-          So gestire ticket/player
-          <input type="checkbox" name="ticket" required>
-        </label>
-
-        <label>
-          Sono serio e disponibile
-          <input type="checkbox" name="serio" required>
-        </label>
-      </div>
-
       <button type="submit">Invia candidatura</button>
 
     </form>
 
     <div id="loader"></div>
-
     <p class="footer">© KUSH</p>
   </div>
 
   <div id="successBox" class="success">
-
     <div class="success-icon">✅</div>
-
     <h2>Candidatura inviata!</h2>
-
     <p>La tua candidatura staff è stata inviata correttamente.</p>
-
     <p>Entra nel Discord di KUSH.</p>
-
-    <a href="https://dsc.gg/kushgg" target="_blank">
-      👉 Entra nel Discord
-    </a>
-
+    <a href="https://dsc.gg/kushgg" target="_blank">Entra nel Discord</a>
   </div>
 
 </div>
 
 <script>
-
 const webhookURL = "https://discord.com/api/webhooks/1506916922090848266/EAJASVoc5VlYO_q-6AdPn-d30dvyk0fVo4GNmP8rwhqlLdbBYxkttkaN7nB17dJKxDFt";
 
 document.getElementById("staffForm").addEventListener("submit", function(e) {
-
   e.preventDefault();
 
   const f = new FormData(e.target);
-
-  if (f.get("firma").toUpperCase() !== "ACCETTO REGOLE KUSH") {
-    alert('Devi scrivere "ACCETTO REGOLE KUSH"');
-    return;
-  }
-
   const discord = f.get("discord");
 
   const invii = JSON.parse(localStorage.getItem("inviiStaffKush") || "[]");
@@ -331,101 +215,61 @@ document.getElementById("staffForm").addEventListener("submit", function(e) {
   document.getElementById("loader").style.display = "block";
 
   const embed = {
-
-    title: "🔥 NUOVA CANDIDATURA STAFF – KUSH RP",
-
+    title: "🔥 NUOVA CANDIDATURA STAFF – KUSH",
     color: 0xff1a1a,
-
     fields: [
-
       {
         name: "👤 Informazioni candidato",
         value:
 `**Nome:** ${f.get("nome")}
 **Discord:** ${discord}
-**Età:** ${f.get("eta")}
-**Nome IG:** ${f.get("ingame")}
-**FiveM/Steam:** ${f.get("fivem")}`
+**Età:** ${f.get("eta")}`
       },
-
       {
-        name: "🛡️ Ruolo richiesto",
-        value:
-`**Ruolo:** ${f.get("ruolo")}
-**Disponibilità:** ${f.get("disponibilita")}`
+        name: "⏰ Disponibilità",
+        value: f.get("disponibilita")
       },
-
       {
         name: "📚 Esperienza Staff",
         value: f.get("esperienza")
       },
-
       {
         name: "💬 Motivazione",
         value: f.get("motivazione")
-      },
-
-      {
-        name: "✅ Conferme",
-        value:
-`${f.get("regolamento") ? "🟢 Regolamento RP confermato" : "🔴 NO"}
-${f.get("ticket") ? "🟢 Gestione ticket confermata" : "🔴 NO"}
-${f.get("serio") ? "🟢 Serietà confermata" : "🔴 NO"}`
-      },
-
-      {
-        name: "✍️ Firma digitale",
-        value: `\`${f.get("firma")}\``
       }
-
     ],
-
     footer: {
-      text: "KUSH RP Staff System"
+      text: "KUSH Staff System"
     },
-
-    timestamp: new Date()
-
+    timestamp: new Date().toISOString()
   };
 
   fetch(webhookURL, {
-
     method: "POST",
-
     headers: {
       "Content-Type": "application/json"
     },
-
     body: JSON.stringify({
       embeds: [embed]
     })
-
   })
-
-  .then(() => {
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Errore webhook");
+    }
 
     invii.push(discord);
-
     localStorage.setItem("inviiStaffKush", JSON.stringify(invii));
 
     document.getElementById("formBox").style.display = "none";
-
     document.getElementById("successBox").style.display = "block";
-
     document.getElementById("loader").style.display = "none";
-
   })
-
   .catch(() => {
-
-    alert("Errore durante l'invio.");
-
+    alert("Errore durante l'invio. Controlla il webhook Discord.");
     document.getElementById("loader").style.display = "none";
-
   });
-
 });
-
 </script>
 
 </body>
